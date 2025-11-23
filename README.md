@@ -35,36 +35,29 @@ A custom-built internal dashboard-style UI for engineers.
 1. Docker – Container Running
 ![Docker Container Running](images/Docker%20Run%20+%20Container%20Running.png)
 
-📌 2. Docker Build Output
-/images/Docker Build.png
+2. Docker Build Output
+![Docker Build](images/Docker%20Build.png)
 
+3. Logs Updating (Prediction Log)
+![Logs Updating](images/Logs%20Updating%20(prediction%20log).png)
 
-📌 3. Prediction Logs Updating
-/images/Logs Updating (prediction log).png
+4. Feature Names / Values Array
+![Values array](images/Values%20array.png)
 
+5. SHAP Explainability Output
+![Values array](images/Values%20array.png)
 
-📌 4. Swagger – Feature Names / Values
-/images/Values array.png
+6. Successful Prediction
+![Successful Prediction](images/Successful%20Prediction.png)
 
+7. Swagger – Predict Endpoint Expanded
+![Swagger Predict Endpoint](images/Swagger%20Predict%20Endpoint%20Expanded.png)
 
-📌 5. SHAP Explainability Output
-/images/SHAP explanation output.png
+8. Swagger API Docs
+![Swagger API Docs](images/Swagger%20API%20Docs.png)
 
-
-📌 6. Successful Prediction Response
-/images/Successful Prediction.png
-
-
-📌 7. Swagger Predict Endpoint Expanded
-/images/Swagger Predict Endpoint Expanded.png
-
-
-📌 8. Swagger API Docs
-/images/Swagger API Docs.png
-
-
-📌 9. FastAPI Landing Page (Custom UI)
-/images/Walbrydge IoT Predictive Maintenance Service.png
+9. FastAPI Custom Landing Page
+![Walbrydge IoT Predictive Maintenance Service](images/Walbrydge%20IoT%20Predictive%20Maintenance%20Service.png)
 
 ---
 
