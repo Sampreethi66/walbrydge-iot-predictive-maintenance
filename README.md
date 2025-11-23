@@ -44,19 +44,22 @@ A custom-built internal dashboard-style UI for engineers.
 4. Feature Names / Values Array
 ![Values array](images/Values%20array.png)
 
-5. SHAP Explainability Output
+🧠 Explainability (SHAP)
+This endpoint helps reliability engineers understand feature contributions.
+
+6. SHAP Explainability Output
 ![Values array](images/Values%20array.png)
 
-6. Successful Prediction
+7. Successful Prediction
 ![Successful Prediction](images/Successful%20Prediction.png)
 
-7. Swagger – Predict Endpoint Expanded
+8. Swagger – Predict Endpoint Expanded
 ![Swagger Predict Endpoint](images/Swagger%20Predict%20Endpoint%20Expanded.png)
 
-8. Swagger API Docs
+9. Swagger API Docs
 ![Swagger API Docs](images/Swagger%20API%20Docs.png)
 
-9. FastAPI Custom Landing Page
+10. FastAPI Custom Landing Page
 ![Walbrydge IoT Predictive Maintenance Service](images/Walbrydge%20IoT%20Predictive%20Maintenance%20Service.png)
 
 ---
@@ -152,7 +155,7 @@ pip install -r requirements.txt
 python src/feature_engineering.py
 python src/train_model.py
 uvicorn api.main:app --reload
-
+---
 
 Open:
 
@@ -164,11 +167,11 @@ Docs → http://127.0.0.1:8000/api/docs
 Build
 docker build -t walbrydge-iot .
 
-
+----
 Run
 docker run -p 8000:8000 walbrydge-iot
 
-
+----
 🧱 Project Structure
 walbrydge-iot-predictive-maintenance/
 │
@@ -193,6 +196,7 @@ walbrydge-iot-predictive-maintenance/
 ├── requirements.txt
 ├── Dockerfile
 └── README.md
+---
 
 🤖 ML Pipeline
 Step 1 — Feature Engineering
@@ -231,5 +235,5 @@ GET /health returns:
   "environment": "docker"
 }
 
-
+---
 
