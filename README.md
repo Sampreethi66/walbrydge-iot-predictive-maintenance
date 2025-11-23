@@ -46,19 +46,34 @@ Swagger UI shows all model endpoints clearly.
 
 # 🧠 Architecture Diagram
             ┌────────────────────┐
-   flowchart LR
-    A[Sensors Data<br>NASA Turbofan Dataset] -->|ETL & Cleaning| B(Feature Engineering<br>Scaling + Labeling)
-    B -->|Train| C(Model Training<br>RandomForest)
-    C --> D(SHAP Explainability Engine)
-
-    C -->|Export| E[Models Folder<br>model.pkl<br>scaler.pkl<br>feature_names.pkl]
-
-    E -->|Load| F(FastAPI Service<br>Custom UI)
-    D -->|Explain| F
-
-    F -->|Prediction Logs| G[logs/predictions.jsonl]
-
-    F -->|Served via| H((Docker Container))
+            │ NASA Turbofan Data │
+            └──────────┬─────────┘
+                       ▼
+            ┌──────────────────────┐
+            │ Feature Engineering  │
+            │ Generate RUL labels  │
+            └──────────┬───────────┘
+                       ▼
+            ┌──────────────────────┐
+            │ ML Training (RF)     │
+            │ Save model + scaler  │
+            └──────────┬───────────┘
+                       ▼
+         ┌────────────────────────────┐
+         │ FastAPI Inference Service  │
+         │  - /predict                │
+         │  - /explain (SHAP)         │
+         │  - /health                 │
+         │  - Custom Landing UI       │
+         └──────────┬────────────────┘
+                    ▼
+         ┌────────────────────────────┐
+         │ Dockerized Deployment       │
+         └──────────┬────────────────┘
+                    ▼
+         ┌────────────────────────────┐
+         │ Internal Tools / Dashboards │
+         └────────────────────────────┘
 
 
 ---
@@ -112,4 +127,84 @@ pip install -r requirements.txt
 python src/feature_engineering.py
 python src/train_model.py
 uvicorn api.main:app --reload
+
+
+Open:
+
+UI → http://127.0.0.1:8000
+
+Docs → http://127.0.0.1:8000/api/docs
+
+🐳 Run With Docker
+Build
+docker build -t walbrydge-iot .
+
+
+Run
+docker run -p 8000:8000 walbrydge-iot
+
+
+🧱 Project Structure
+walbrydge-iot-predictive-maintenance/
+│
+├── api/
+│   └── main.py
+├── src/
+│   ├── feature_engineering.py
+│   ├── predict.py
+│   ├── train_model.py
+│   └── test_request.py
+├── data/
+│   ├── raw/
+│   └── processed/
+├── models/
+│   ├── model.pkl
+│   ├── scaler.pkl
+│   └── feature_names.pkl
+├── logs/
+│   └── predictions.jsonl
+├── images/
+├── notebooks/
+├── requirements.txt
+├── Dockerfile
+└── README.md
+
+🤖 ML Pipeline
+Step 1 — Feature Engineering
+
+Load NASA sensor data
+
+Calculate RUL
+
+Generate binary classification labels
+
+Step 2 — Train RandomForest
+
+Save model artifacts
+
+Save preprocessing scaler
+
+Save feature names
+
+Step 3 — Serve Model via FastAPI
+
+Scale inputs
+
+Predict
+
+Log results
+
+Return explanation
+
+🛡 Health Check Endpoint
+
+GET /health returns:
+
+{
+  "status": "ok",
+  "model_loaded": true,
+  "environment": "docker"
+}
+
+
 
