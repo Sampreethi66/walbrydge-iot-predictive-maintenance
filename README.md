@@ -32,7 +32,39 @@ This project simulates what Fortune 100 industrial companies (GE, Boeing, Honeyw
 
 A custom-built internal dashboard-style UI for engineers.
 
-![Landing Page](images/ui_landing.png)
+1. Docker – Container Running
+![Docker Container Running](images/Docker%20Run%20+%20Container%20Running.png)
+
+📌 2. Docker Build Output
+/images/Docker Build.png
+
+
+📌 3. Prediction Logs Updating
+/images/Logs Updating (prediction log).png
+
+
+📌 4. Swagger – Feature Names / Values
+/images/Values array.png
+
+
+📌 5. SHAP Explainability Output
+/images/SHAP explanation output.png
+
+
+📌 6. Successful Prediction Response
+/images/Successful Prediction.png
+
+
+📌 7. Swagger Predict Endpoint Expanded
+/images/Swagger Predict Endpoint Expanded.png
+
+
+📌 8. Swagger API Docs
+/images/Swagger API Docs.png
+
+
+📌 9. FastAPI Landing Page (Custom UI)
+/images/Walbrydge IoT Predictive Maintenance Service.png
 
 ---
 
