@@ -45,4 +45,71 @@ Swagger UI shows all model endpoints clearly.
 ---
 
 # 🧠 Architecture Diagram
+            ┌────────────────────┐
+   flowchart LR
+    A[Sensors Data<br>NASA Turbofan Dataset] -->|ETL & Cleaning| B(Feature Engineering<br>Scaling + Labeling)
+    B -->|Train| C(Model Training<br>RandomForest)
+    C --> D(SHAP Explainability Engine)
+
+    C -->|Export| E[Models Folder<br>model.pkl<br>scaler.pkl<br>feature_names.pkl]
+
+    E -->|Load| F(FastAPI Service<br>Custom UI)
+    D -->|Explain| F
+
+    F -->|Prediction Logs| G[logs/predictions.jsonl]
+
+    F -->|Served via| H((Docker Container))
+
+
+---
+
+# 📡 **Endpoints Overview**
+
+| Endpoint | Description |
+|---------|-------------|
+| `GET /` | Custom UI home page |
+| `POST /predict` | Predict failure probability |
+| `POST /explain` | SHAP explainability |
+| `GET /health` | Health status |
+| `GET /api/docs` | Swagger Docs |
+| `GET /api/openapi.json` | OpenAPI Schema |
+
+---
+
+# 🔮 **Prediction Example**
+
+### Swagger Input
+![Swagger Predict](images/swagger_predict.png)
+
+### Successful Prediction Output
+![Predict Result](images/predict_result.png)
+
+---
+
+# 🧠 **Explainability (SHAP)**
+
+This endpoint helps reliability engineers understand feature contributions.
+
+![Explain SHAP](images/shap_explain.png)
+
+---
+
+# 📊 **Prediction Logs (For Drift Monitoring)**
+
+Every inference request & its result is logged.
+
+![Logs](images/logs.png)
+
+---
+
+# 🧪 **Local Development**
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+python src/feature_engineering.py
+python src/train_model.py
+uvicorn api.main:app --reload
 
