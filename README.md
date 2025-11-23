@@ -145,7 +145,7 @@ Every inference request & its result is logged.
 
 ---
 
-# 🧪 **Local Development**
+## 🧪 **Local Development**
 
 ```bash
 python -m venv .venv
@@ -224,7 +224,7 @@ Predict
 Log results
 
 Return explanation
-
+---
 🛡 Health Check Endpoint
 
 GET /health returns:
